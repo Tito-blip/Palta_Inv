@@ -1,0 +1,7 @@
+{
+  "name": "Palta_Inv",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
