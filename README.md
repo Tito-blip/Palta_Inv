@@ -6,7 +6,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Tito-blip/Palta_Inv">
-    <img src="/src/assets/logo.png" alt="Logo" width="120" height="120">
+    <img src="https://github.com/user-attachments/assets/31f0d239-6df6-432c-974e-5eaf7d247b2e" alt="Logo" width="120" height="120">
   </a>
 
 <h3 align="center">Palta Inv</h3>
