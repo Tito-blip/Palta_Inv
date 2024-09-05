@@ -19,7 +19,7 @@
     ·
     <a href="https://github.com/Tito-blip/Palta_Inv/wiki">Docs</a>
     ·
-    <a href="https://excalidraw.com/#json=AJm1VIJjHbXYPJNK8GBEQ,FAcdYntzVVXcXAGApb7hcw">Wireframe</a>
+    <a href="https://excalidraw.com/#json=CrxDfqNs8qS170ZxoC8v5,8Ie0ioEuWDndNg2DugBSKA">Wireframe</a>
   </p>
 </div>
 
