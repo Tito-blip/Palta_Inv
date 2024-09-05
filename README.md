@@ -17,7 +17,7 @@
     <br />
     <a href="#deploy">Deploy</a>
     ·
-    <a href="https://github.com/Tito-blip/Forest-Inventory/wiki">Docs</a>
+    <a href="https://github.com/Tito-blip/Palta_Inv/wiki">Docs</a>
     ·
     <a href="https://excalidraw.com/#json=AJm1VIJjHbXYPJNK8GBEQ,FAcdYntzVVXcXAGApb7hcw">Wireframe</a>
   </p>
@@ -39,6 +39,9 @@
 <br>
 
 ## Deploy
+
+
+
 <br>
 <!-- FOLDER STRUCTURE -->
 
