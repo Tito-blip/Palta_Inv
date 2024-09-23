@@ -11,7 +11,7 @@
           <ion-title size="large">Storage</ion-title>
         </ion-toolbar>
       </ion-header>
-
+      
       <ExploreContainer name="Storage" />
     </ion-content>
   </ion-page>

@@ -17,6 +17,21 @@
           <ion-icon aria-hidden="true" :icon="archive" />
           <ion-label>Tracking</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="sales" href="/Sales">
+          <ion-icon aria-hidden="true" :icon="archive" />
+          <ion-label>Tracking</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="stats" href="/Stats">
+          <ion-icon aria-hidden="true" :icon="archive" />
+          <ion-label>Tracking</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="profile" href="/Profile">
+          <ion-icon aria-hidden="true" :icon="archive" />
+          <ion-label>Tracking</ion-label>
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
