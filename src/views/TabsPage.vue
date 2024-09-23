@@ -19,18 +19,18 @@
         </ion-tab-button>
 
         <ion-tab-button tab="sales" href="/Sales">
-          <ion-icon aria-hidden="true" :icon="archive" />
-          <ion-label>Tracking</ion-label>
+          <ion-icon aria-hidden="true" :icon="cash" />
+          <ion-label>Sales</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="stats" href="/Stats">
-          <ion-icon aria-hidden="true" :icon="archive" />
-          <ion-label>Tracking</ion-label>
+          <ion-icon aria-hidden="true" :icon="star" />
+          <ion-label>Stats</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="profile" href="/Profile">
-          <ion-icon aria-hidden="true" :icon="archive" />
-          <ion-label>Tracking</ion-label>
+          <ion-icon aria-hidden="true" :icon="person" />
+          <ion-label>Profile</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -39,5 +39,5 @@
 
 <script setup lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { home, storefront, archive } from 'ionicons/icons';
+import { home, storefront, archive, cash, star, person } from 'ionicons/icons';
 </script>

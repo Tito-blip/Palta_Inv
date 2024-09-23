@@ -17,9 +17,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'Home',
-        component: {
-          template: '<ion-page><h1>Home Page Content</h1></ion-page>'
-        }
+        component: () => import('@/views/Home/HomePage.vue')
       },
       {
         path: 'Storage',

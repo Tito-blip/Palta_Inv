@@ -8,11 +8,9 @@
         <ion-grid>
             <ion-row>
                 <ion-col>             
-                    <ion-container>
                         <h2>Container 1</h2>
                         <p>This is some sample text in container 1.</p>
                         <sl-checkbox>Click</sl-checkbox>
-                    </ion-container>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -25,5 +23,6 @@
 </template>
 
 <script setup lang="ts">
+    import {IonCol, IonRow, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
     import Card from '@/components/Card.vue';
 </script>
