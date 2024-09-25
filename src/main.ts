@@ -41,9 +41,15 @@ import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
 
 setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.0/cdn/');
 
+// DataTable component 
+
+import Vue3EasyDataTable from 'vue3-easy-data-table';
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
+
+app.component('EasyDataTable', Vue3EasyDataTable);
 
 router.isReady().then(() => {
   app.mount('#app');

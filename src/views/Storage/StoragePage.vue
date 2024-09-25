@@ -15,14 +15,26 @@
           <ion-title size="large">Storage</ion-title>
         </ion-toolbar>
       </ion-header>
-      
-      <ExploreContainer name="Storage" />
+      <ion-grid>
+            <ion-row>
+                <ion-col>             
+                        <h2>Container 1</h2>
+                        <p>This is some sample text in container 1.</p>
+                        <sl-checkbox>Click</sl-checkbox>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <Card />
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons, IonGrid, IonCol, IonRow } from '@ionic/vue';
 import Menu from '@/components/Menu.vue';
+import Card from '@/components/Card.vue';
 </script>

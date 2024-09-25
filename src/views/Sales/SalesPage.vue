@@ -10,26 +10,15 @@
       </ion-header>
       <ion-content :fullscreen="true">
         <Menu />
-        <ion-grid>
-            <ion-row>
-                <ion-col>             
-                        <h2>Container 1</h2>
-                        <p>This is some sample text in container 1.</p>
-                        <sl-checkbox>Click</sl-checkbox>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <Card />
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+        <div class="ion-padding">
+            <DataTable />
+        </div>
     </ion-content>
 </ion-page>
 </template>
 
 <script setup>
-    import {IonCol, IonRow, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-    import Card from '@/components/Card.vue';
+    import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
     import Menu from '@/components/Menu.vue';
+    import DataTable from '@/components/DataTable.vue';
 </script>

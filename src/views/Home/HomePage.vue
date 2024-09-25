@@ -12,21 +12,22 @@
       <Menu />
       <ion-searchbar color="secondary" id="custom" placeholder="Search"></ion-searchbar>
       
-      <sl-carousel loop autoplay class="scroll-hint" pagination style="--scroll-hint: 10%;">
-        <sl-carousel-item>
-          <img src="https://picsum.photos/500?random=1">
-        </sl-carousel-item>
-        <sl-carousel-item>
-          <img src="https://picsum.photos/500?random=2">
-        </sl-carousel-item>
-        <sl-carousel-item>
-          <img src="https://picsum.photos/500?random=3">
-        </sl-carousel-item>
-        <sl-carousel-item>
-          <img src="https://picsum.photos/500?random=4">
-        </sl-carousel-item>
-      </sl-carousel>
-
+      <div class="ion-padding">
+        <sl-carousel class="vertical" loop autoplay>
+          <sl-carousel-item>
+            <img src="https://picsum.photos/500?random=1">
+          </sl-carousel-item>
+          <sl-carousel-item>
+            <img src="https://picsum.photos/500?random=2">
+          </sl-carousel-item>
+          <sl-carousel-item>
+            <img src="https://picsum.photos/500?random=3">
+          </sl-carousel-item>
+          <sl-carousel-item>
+            <img src="https://picsum.photos/500?random=4">
+          </sl-carousel-item>
+        </sl-carousel>
+      </div>      
     </ion-content>
   </ion-page>
 </template>
@@ -35,3 +36,22 @@
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton } from '@ionic/vue';
 import Menu from '@/components/Menu.vue';
 </script>
+
+<style>
+  .vertical {
+    max-height: 600px;
+  }
+
+  .vertical::part(base) {
+    grid-template-areas: 'slides slides pagination';
+  }
+
+  .vertical::part(pagination) {
+    flex-direction: column;
+  }
+
+  .vertical::part(navigation) {
+    transform: rotate(90deg);
+    display: flex;
+  }
+</style>
