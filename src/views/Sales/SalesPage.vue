@@ -1,10 +1,15 @@
 <template>
 <ion-page>
     <ion-header>
-    <ion-toolbar>
-        <ion-title>Sales</ion-title>
-    </ion-toolbar>
-    </ion-header>
+        <ion-toolbar>
+          <ion-title>Sales</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content :fullscreen="true">
+        <Menu />
         <ion-grid>
             <ion-row>
                 <ion-col>             
@@ -19,10 +24,12 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
+    </ion-content>
 </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
     import {IonCol, IonRow, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
     import Card from '@/components/Card.vue';
+    import Menu from '@/components/Menu.vue';
 </script>

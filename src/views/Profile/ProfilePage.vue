@@ -3,22 +3,51 @@
       <ion-header>
         <ion-toolbar>
           <ion-title>Profile</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content :fullscreen="true">
-        <ion-header collapse="condense">
-          <ion-toolbar>
-            <ion-title size="large">Profile</ion-title>
-          </ion-toolbar>
-        </ion-header>
-  
-        <ExploreContainer name="Profile" />
+        <Menu />
+
+        <div id="container">
+          <sl-avatar
+            image="https://picsum.photos/500?random=2" alt="">
+          </sl-avatar>
+        </div>
       </ion-content>
     </ion-page>
-  </template>
-  
-  <script setup lang="ts">
-  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-  import ExploreContainer from '@/components/ExploreContainer.vue';
-  </script>
-  
+</template>
+
+<style scoped>
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+</style>
+
+<script setup>
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
+  import Menu from '@/components/Menu.vue';
+</script>

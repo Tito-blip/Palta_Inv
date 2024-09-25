@@ -1,11 +1,15 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Home</ion-title>
-      </ion-toolbar>
-    </ion-header>
+        <ion-toolbar>
+          <ion-title>Home</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
     <ion-content :fullscreen="true">
+      <Menu />
       <ion-searchbar color="secondary" id="custom" placeholder="Search"></ion-searchbar>
       
       <sl-carousel loop autoplay class="scroll-hint" pagination style="--scroll-hint: 10%;">
@@ -28,5 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton } from '@ionic/vue';
+import Menu from '@/components/Menu.vue';
 </script>

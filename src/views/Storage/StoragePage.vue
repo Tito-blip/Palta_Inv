@@ -1,11 +1,15 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Storage</ion-title>
-      </ion-toolbar>
-    </ion-header>
+        <ion-toolbar>
+          <ion-title>Storage</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
     <ion-content :fullscreen="true">
+      <Menu />
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Storage</ion-title>
@@ -20,4 +24,5 @@
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import Menu from '@/components/Menu.vue';
 </script>
