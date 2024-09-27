@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "types": ["@shoelace-style/shoelace/dist/types/vue"],
+    "allowJs": true,
     "paths": {
       "@/*": ["./src/*"]
     }
