@@ -36,18 +36,30 @@ import './theme/variables.css';
 
 /* Shoelace components */
 import '@shoelace-style/shoelace'
-import '@shoelace-style/shoelace/dist/themes/light.css';
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
+import '@shoelace-style/shoelace/dist/themes/light.css'
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path'
 
-setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.0/cdn/');
+setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.0/cdn/')
+
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
 // DataTable component 
 
-import Vue3EasyDataTable from 'vue3-easy-data-table';
+import Vue3EasyDataTable from 'vue3-easy-data-table'
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(vuetify);
 
 app.component('EasyDataTable', Vue3EasyDataTable);
 

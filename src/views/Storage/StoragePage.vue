@@ -15,7 +15,22 @@
           <ion-title size="large">Storage</ion-title>
         </ion-toolbar>
       </ion-header>
+
       <div class="ion-padding">
+        <v-chip-group filter multiple>
+          <v-chip color="primary" variant="elevated">
+              Category
+          </v-chip>
+          <v-chip color="green" variant="elevated">
+              Category
+          </v-chip>
+          <v-chip color="pink" variant="elevated">
+              Category
+          </v-chip>
+        </v-chip-group>
+      </div>
+
+      <div class="ion-padding">  
         <Card />
         <Card />
         <Card />
@@ -26,8 +41,8 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons, IonGrid, IonCol, IonRow } from '@ionic/vue';
+<script setup>
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
 import Menu from '@/components/Menu.vue';
 import Card from '@/components/Card.vue';
 </script>

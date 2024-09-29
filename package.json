@@ -24,10 +24,12 @@
     "swiper": "^11.1.14",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0",
-    "vue3-easy-data-table": "^1.5.47"
+    "vue3-easy-data-table": "^1.5.47",
+    "vuetify": "^3.7.2"
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.2",
+    "@mdi/font": "^7.4.47",
     "@vitejs/plugin-legacy": "^5.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
