@@ -49,5 +49,4 @@
 
 <script setup>
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-  import Menu from '@/components/Menu.vue';
 </script>

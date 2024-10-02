@@ -24,5 +24,4 @@
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
-import Menu from '@/components/Menu.vue';
 </script>

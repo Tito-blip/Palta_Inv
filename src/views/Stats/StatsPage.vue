@@ -27,7 +27,6 @@
   
 <script setup lang="ts">
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
-  import Menu from '@/components/Menu.vue';
   import Spark from '@/components/Spark.vue';
 </script>
   

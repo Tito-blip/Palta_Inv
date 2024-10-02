@@ -1,5 +1,6 @@
 <template>
   <ion-page>
+   <ion-content>
     <ion-header>
         <ion-toolbar>
           <ion-title>Home</ion-title>
@@ -8,8 +9,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-    <ion-content :fullscreen="true">
-      <Menu />
       <ion-searchbar color="secondary" id="custom" placeholder="Search"></ion-searchbar>
    
       <Carousel />
@@ -20,7 +19,6 @@
 
 <script setup lang="ts">
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton } from '@ionic/vue';
-  import Menu from '@/components/Menu.vue';
   import Carousel from '@/components/Carousel.vue';
 </script>
 

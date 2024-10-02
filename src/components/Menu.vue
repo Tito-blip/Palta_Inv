@@ -1,81 +1,149 @@
 <template>
-    <ion-menu content-id="main">
-      <ion-content class="ion-padding">
-        <ion-menu-toggle>
-          <ion-list lines="none">
-            <ion-list-header>
-              Navigate
-            </ion-list-header>
-
-            <ion-item router-link="/Home" lines="none" button>
-              <sl-icon name="house-door-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Home</b></ion-label>
-            </ion-item>
-  
-            <ion-item router-link="/Storage" lines="none" button>
-              <sl-icon name="inboxes-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Storage</b></ion-label>
-            </ion-item>
-  
-            <ion-item router-link="/Tracking" lines="none" button>
-              <sl-icon name="map-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Tracking</b></ion-label>
-            </ion-item>
-            
-            <ion-item router-link="/Sales" lines="none" button>
-              <sl-icon name="piggy-bank-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Sales</b></ion-label>
-            </ion-item>
-            
-            <ion-item router-link="/Stats" lines="none" button>
-              <sl-icon name="bar-chart-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Stats</b></ion-label>
-            </ion-item>
-            
-            <ion-item router-link="/Profile" lines="none" button>
-              <sl-icon name="person-fill"></sl-icon>
-              &nbsp;
-              <ion-label><b>Profile</b></ion-label>
-            </ion-item>
-
-            <sl-divider></sl-divider>
-            
-            <ion-button color="warning"> Login </ion-button>
-            <ion-button color="danger"> Register   </ion-button>
-          </ion-list>
+  <ion-menu content-id="main-content">
+    <ion-content class="ion-padding">
+      <ion-list lines="none">
+        <ion-list-header>
+          Navigate
+        </ion-list-header>
+        <ion-menu-toggle :auto-hide="false" v-for="p in appPages" :key="p.title">
+          <ion-item button @click="navigate(p.url)">
+            <ion-icon slot="start" :icon="p.icon"></ion-icon>
+            &nbsp;
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
         </ion-menu-toggle>
-      </ion-content>
-    </ion-menu>
-  
-    <ion-page id="main">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-    </ion-page>
-  </template>
-  
-<script setup lang="ts">
-    import { IonMenu, IonContent, IonList, IonListHeader, IonItem, IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonMenuToggle, IonLabel, IonButton } from '@ionic/vue';    
-</script>
+      </ion-list>
 
-<style scoped>
-  ion-menu {
-    --width: 250px;
-  }
-  
-  ion-content p {
-    font-size: 18px;
-    text-align: center;
-    color: var(--ion-color-medium);
-  }
-</style>
-  
+      <ion-list v-if="loggedIn" lines="none">
+        <ion-list-header>
+          Account
+        </ion-list-header>
+        <ion-menu-toggle :auto-hide="false">
+          <ion-item button @click="navigate('/profile')">
+            <ion-icon slot="start" :icon="ionIcons.person"></ion-icon>
+            <ion-label>
+              Profile
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle :auto-hide="false">
+          <ion-item button @click="logout()">
+            <ion-icon slot="start" :icon="ionIcons.logOut"></ion-icon>
+            <ion-label>
+              Logout
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list v-if="!loggedIn" lines="none">
+        <ion-list-header>
+          Account
+        </ion-list-header>
+        <ion-menu-toggle :auto-hide="false">
+          <ion-item button @click="navigate('/login')">
+            <ion-icon slot="start" :icon="ionIcons.logIn"></ion-icon>
+            <ion-label>
+              Login
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle :auto-hide="false">
+          <ion-item button @click="navigate('/signup')">
+            <ion-icon slot="start" :icon="ionIcons.personAdd"></ion-icon>
+            <ion-label>
+              Signup
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item>
+          <ion-icon slot="start" :icon="ionIcons.moonOutline"></ion-icon>
+            <ion-toggle v-model="localDark" label-placement="start">
+              Dark Mode
+            </ion-toggle>
+          </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ion-menu>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { IonContent, IonMenuButton, IonButtons, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonTitle, IonToolbar, IonToggle } from '@ionic/vue';
+import * as ionIcons from "ionicons/icons";
+import { calendar, people, map, informationCircle } from "ionicons/icons";
+import router from '@/router';
+
+export default defineComponent({
+  name: 'Menu',
+  components: {
+    IonContent,
+    IonMenuButton,
+    IonButtons,
+    IonHeader,
+    IonIcon,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonListHeader,
+    IonMenu,
+    IonMenuToggle,
+    IonTitle,
+    IonToolbar,
+    IonToggle,
+  },
+  props: {
+    darkMode: Boolean,
+    currentRoute: String,
+  },
+  emits: ['dark-mode-changed'],
+  setup(props) {
+    const localDark = ref(false);
+    const loggedIn = ref(false);
+
+    const navigate = (url: string) => {
+      router.push(url);
+    }
+
+    const logout = () => {
+    }
+
+    return {
+      localDark,
+      navigate,
+      logout,
+      loggedIn,
+      appPages: [
+        {
+          title: 'Home',
+          url: '/Home',
+          icon: calendar
+        },
+        {
+          title: 'Storage',
+          url: '/Storage',
+          icon: people
+        },
+        {
+          title: 'Sales',
+          url: '/Sales',
+          icon: map
+        },
+        {
+          title: 'Stats',
+          url: '/Stats',
+          icon: informationCircle
+        }
+      ],
+      ionIcons,
+      calendar,
+      people,
+      map,
+      informationCircle
+    };
+  },
+});
+</script>
