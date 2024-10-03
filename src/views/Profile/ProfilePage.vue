@@ -11,10 +11,11 @@
       <ion-content :fullscreen="true">
         <Menu />
 
-        <div id="container">
-          <sl-avatar
-            image="https://picsum.photos/500?random=2" alt="">
-          </sl-avatar>
+        <div id="container" class="ion-padding">
+          <v-card height="300" color="#70e15f">
+            <sl-avatar image="https://picsum.photos/500?random=2" alt="" id="container"> </sl-avatar>
+            <v-text> Name </v-text>
+          </v-card>
         </div>
       </ion-content>
     </ion-page>
@@ -49,4 +50,5 @@
 
 <script setup>
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
+  import Menu from '@/components/Menu.vue';
 </script>

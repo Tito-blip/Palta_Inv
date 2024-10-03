@@ -19,5 +19,6 @@
 
 <script setup>
     import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
+    import Menu from '@/components/Menu.vue';
     import DataTable from '@/components/DataTable.vue';
 </script>

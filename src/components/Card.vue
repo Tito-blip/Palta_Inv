@@ -1,34 +1,50 @@
 <template>
-<sl-card class="card-overview">
-    <img
-      slot="image"
-      src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-      alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-    />
-  
-    <strong>Mittens</strong><br />
-    This kitten is as cute as he is playful. Bring him home today!<br />
-    <small>6 weeks old</small>
-  
-    <div slot="footer">
-      <sl-button variant="success" pill>More Info</sl-button>
-      <sl-rating></sl-rating>
-    </div>
-  </sl-card>
-</template>  
+  <div class="ion-margin">
+  <v-card
+    class="mx-auto"
+    max-width="400"
+    :color="color"
+  >
 
-<style>
-    .card-overview {
-        max-width: 300px;
-    }
+    <v-img :src="img">
+    </v-img>
 
-    .card-overview small {
-        color: var(--sl-color-neutral-500);
-    }
+    <v-card-actions>
+      <v-list-item class="w-100">
 
-    .card-overview [slot='footer'] {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-</style>
+        <v-list-item-title>{{ name }}</v-list-item-title>
+
+        <v-list-item-subtitle>Stock: {{ stock }}</v-list-item-subtitle>
+
+        <template v-slot:append>
+          <div class=align-end>
+            <v-btn icon="mdi-pencil"></v-btn>
+            &nbsp;
+          </div>
+        </template>
+      </v-list-item>
+    </v-card-actions>
+  </v-card>
+</div>
+</template>
+
+<script setup>
+const props = defineProps({
+  color: {
+    type: String,
+    default: 'primary',
+  },
+  img: {
+    type: String,
+    default: 'https://picsum.photos/500/',
+  },
+  name: {
+    type: String,
+    default: 'Product',
+  },
+  stock: {
+    type: Number,
+    default: 0,
+  }
+});
+</script>

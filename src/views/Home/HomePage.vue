@@ -20,6 +20,7 @@
 <script setup lang="ts">
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton } from '@ionic/vue';
   import Carousel from '@/components/Carousel.vue';
+  import Menu from '@/components/Menu.vue';
 </script>
 
 <style>

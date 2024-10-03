@@ -1,5 +1,15 @@
 <template>
   <ion-menu content-id="main-content">
+    <ion-header>
+        <ion-toolbar class="welcome-container" color="tertiary">
+          <v-avatar button>
+            <v-img src="https://picsum.photos/200"></v-img>
+          </v-avatar>
+          &nbsp;
+          <span>Welcome User</span>
+        
+        </ion-toolbar>
+      </ion-header>
     <ion-content class="ion-padding">
       <ion-list lines="none">
         <ion-list-header>
@@ -23,6 +33,7 @@
         <ion-menu-toggle :auto-hide="false">
           <ion-item button @click="navigate('/profile')">
             <ion-icon slot="start" :icon="ionIcons.person"></ion-icon>
+            &nbsp;
             <ion-label>
               Profile
             </ion-label>
@@ -70,11 +81,20 @@
   </ion-menu>
 </template>
 
+<style scoped>
+.welcome-container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+</style>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { IonContent, IonMenuButton, IonButtons, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonTitle, IonToolbar, IonToggle } from '@ionic/vue';
 import * as ionIcons from "ionicons/icons";
-import { calendar, people, map, informationCircle } from "ionicons/icons";
+import { home, people, map, informationCircle, analytics, cart } from "ionicons/icons";
 import router from '@/router';
 
 export default defineComponent({
@@ -102,7 +122,7 @@ export default defineComponent({
   emits: ['dark-mode-changed'],
   setup(props) {
     const localDark = ref(false);
-    const loggedIn = ref(false);
+    const loggedIn = ref(true);
 
     const navigate = (url: string) => {
       router.push(url);
@@ -120,29 +140,34 @@ export default defineComponent({
         {
           title: 'Home',
           url: '/Home',
-          icon: calendar
+          icon: home
         },
         {
           title: 'Storage',
           url: '/Storage',
+          icon: cart
+        },
+        {
+          title: 'Tracking',
+          url: '/Tracking',
           icon: people
         },
         {
           title: 'Sales',
           url: '/Sales',
-          icon: map
+          icon: cart
         },
         {
           title: 'Stats',
           url: '/Stats',
-          icon: informationCircle
+          icon: analytics
         }
       ],
       ionIcons,
-      calendar,
       people,
       map,
-      informationCircle
+      informationCircle,
+      analytics
     };
   },
 });

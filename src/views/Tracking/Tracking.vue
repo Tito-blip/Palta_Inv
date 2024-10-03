@@ -16,12 +16,23 @@
         </ion-toolbar>
       </ion-header>
 
-      <ExploreContainer name="Tracking" />
+      <div class="ion-padding ion-margin" style="border: solid 1px;">
+        <v-timeline side="end">
+          <v-timeline-item dot-color="grey"> Ordered </v-timeline-item>
+          <v-timeline-item dot-color="green"> Shipped </v-timeline-item>
+          <v-timeline-item dot-color="red"> Problem </v-timeline-item>
+        </v-timeline>
+      </div>
+
+      <div class="ion-padding">
+        <v-btn color="#FFD54F" prepend-icon="mdi-reload"> Update Status </v-btn>
+      </div>
+
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import Menu from '@/components/Menu.vue';
 </script>
