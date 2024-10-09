@@ -11,7 +11,7 @@
       <ion-content :fullscreen="true">
         <Menu />
         <div class="ion-padding">
-            <DataTable />
+          <DataTable />
         </div>
     </ion-content>
 </ion-page>
