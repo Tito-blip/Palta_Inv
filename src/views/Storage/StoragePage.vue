@@ -30,8 +30,12 @@
 
       <div class="ion-padding">  
         <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
-        <Card :name="'Example'" :stock="10" :color="'secondary'" :src="'https://picsum.photos/500/?random=1'"/>
-        <Card :name="'Example 2'" :stock="34" :color="'#FFD180'" :src="'https://picsum.photos/500/?random=2'"/>
+        <Card :name="'Example'" :stock="10" :color="'secondary'"/>
+        <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
+        <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
+        <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
+        <Card :name="'Example'" :stock="10" :color="'secondary'"/>
+        <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
       </div>
     </ion-content>
   </ion-page>
