@@ -122,7 +122,7 @@ export default defineComponent({
   emits: ['dark-mode-changed'],
   setup(props) {
     const localDark = ref(false);
-    const loggedIn = ref(true);
+    const loggedIn = ref(false);
 
     const navigate = (url: string) => {
       router.push(url);
