@@ -23,6 +23,7 @@
     "axios": "^1.7.7",
     "ionicons": "^7.0.0",
     "swiper": "^11.1.14",
+    "vee-validate": "^4.13.2",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0",
     "vuetify": "^3.7.2"

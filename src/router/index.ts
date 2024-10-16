@@ -36,6 +36,18 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Stats/StatsPage.vue')
       },
       {
+        path: 'Login',
+        component: () => import('@/views/Forms/Login/LoginForm.vue')
+      },
+      {
+        path: 'Register',
+        component: () => import('@/views/Forms/Register/RegisterForm.vue')
+      },
+      {
+        path: 'addProduct',
+        component: () => import('@/views/Forms/Add Product/AddProductForm.vue')
+      },
+      {
         path: 'Profile',
         component: () => import('@/views/Profile/ProfilePage.vue')
       }
