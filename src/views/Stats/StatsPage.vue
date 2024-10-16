@@ -17,9 +17,7 @@
       </ion-header>
       <!-- | Placeholder | -->
       <div class="ion-padding">
-        <v-sheet :elevation="6" :height="500" :width="500" border color="warning" rounded>
           <Spark />
-        </v-sheet>
       </div>
     </ion-content>
   </ion-page>
