@@ -32,8 +32,8 @@
         <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
         <Card :name="'Example'" :stock="10" :color="'secondary'"/>
         <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
-        <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
-        <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
+        <Card :name="'PC'" :stock="20" :color="'#9575CD'"/>
+        <Card :name="'PC'" :stock="20" :color="'#9575CD'"/>
         <Card :name="'Example'" :stock="10" :color="'secondary'"/>
         <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
       </div>
