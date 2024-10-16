@@ -2,8 +2,8 @@
   <!-- Replace with data-table-server later -->
   <v-data-table :items="items" :headers="headers">
     <template v-slot:item.actions="{ item }">
-      <v-icon class="me-2" size="small" @click=""> mdi-pencil </v-icon>
-      <v-icon class="me-2" size="small" @click=""> mdi-delete </v-icon>
+      <v-icon color="success" class="me-2" size="small" @click=""> mdi-pencil </v-icon>
+      <v-icon color="#A1887F" class="me-2" size="small" @click=""> mdi-delete </v-icon>
     </template>
   </v-data-table>
 </template>

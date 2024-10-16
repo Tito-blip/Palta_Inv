@@ -52,16 +52,10 @@ const vuetify = createVuetify({
   directives,
 })
 
-// DataTable component 
-
-import Vue3EasyDataTable from 'vue3-easy-data-table'
-
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(vuetify);
-
-app.component('EasyDataTable', Vue3EasyDataTable);
 
 router.isReady().then(() => {
   app.mount('#app');
