@@ -54,7 +54,7 @@
           Account
         </ion-list-header>
         <ion-menu-toggle :auto-hide="false">
-          <ion-item button @click="navigate('/login')">
+          <ion-item button @click="navigate('/Login')">
             <ion-icon slot="start" :icon="ionIcons.logIn"></ion-icon>
             <ion-label>
               Login
@@ -62,7 +62,7 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle :auto-hide="false">
-          <ion-item button @click="navigate('/signup')">
+          <ion-item button @click="navigate('/Register')">
             <ion-icon slot="start" :icon="ionIcons.personAdd"></ion-icon>
             <ion-label>
               Signup
