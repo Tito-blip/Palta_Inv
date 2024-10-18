@@ -12,7 +12,9 @@
       <ion-searchbar color="secondary" id="custom" placeholder="Search"></ion-searchbar>
    
       <Carousel />
-
+      <div class="ion-padding mb-1">
+        <Spark />
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -21,6 +23,7 @@
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton } from '@ionic/vue';
   import Carousel from '@/components/Carousel.vue';
   import Menu from '@/components/Menu.vue';
+  import Spark from '@/components/Spark.vue';
 </script>
 
 <style>

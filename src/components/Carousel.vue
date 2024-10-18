@@ -23,7 +23,7 @@
 <style>
     .swiper {
     width: 90%;
-    height: 50%;
+    height: 45%;
     }
 
     .swiper-slide {

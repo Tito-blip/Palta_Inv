@@ -10,13 +10,18 @@
       </ion-header>
       <ion-content :fullscreen="true">
         <Menu />
+        
+      <v-sheet max-width="400" class="pa-6 mx-auto">
+          <div class="d-flex justify-center">
+            <v-avatar class="ma-3" rounded="1" size="125">
+              <v-img src="https://picsum.photos/400"></v-img>
+            </v-avatar>
+          </div>
+          <div class="justify-center">
+            <h2 class="text-center"> Jhon Doe </h2>
+          </div>
+      </v-sheet>
 
-        <div id="container" class="ion-padding">
-          <v-card height="300" color="#70e15f">
-            <sl-avatar image="https://picsum.photos/500?random=2" alt="" id="container"> </sl-avatar>
-            <v-text> Name </v-text>
-          </v-card>
-        </div>
       </ion-content>
     </ion-page>
 </template>
