@@ -9,7 +9,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content :fullscreen="true">
-        <Menu />
+        <SideBarMenu />
         
       <v-sheet max-width="400" class="pa-6 mx-auto">
           <div class="d-flex justify-center">
@@ -55,5 +55,5 @@
 
 <script setup>
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-  import Menu from '@/components/Menu.vue';
+  import SideBarMenu from '@/components/SideBarMenu.vue';
 </script>

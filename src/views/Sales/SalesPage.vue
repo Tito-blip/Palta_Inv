@@ -9,9 +9,9 @@
         </ion-toolbar>
       </ion-header>
       <ion-content :fullscreen="true">
-        <Menu />
+        <SideBarMenu />
         <div class="ion-padding">
-          <DataTable />
+          <SalesDataTable />
         </div>
     </ion-content>
 </ion-page>
@@ -19,6 +19,6 @@
 
 <script setup>
     import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
-    import Menu from '@/components/Menu.vue';
-    import DataTable from '@/components/DataTable.vue';
+    import SalesDataTable from '@/components/SalesDataTable.vue';
+    import SideBarMenu from '@/components/SideBarMenu.vue';
 </script>

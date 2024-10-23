@@ -9,7 +9,7 @@
         </ion-toolbar>
       </ion-header>
     <ion-content :fullscreen="true">
-      <Menu />
+      <SideBarMenu />
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Storage</ion-title>
@@ -44,7 +44,7 @@
 <script setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
 import Card from '@/components/Card.vue';
-import Menu from '@/components/Menu.vue';
+import SideBarMenu from '@/components/SideBarMenu.vue';
 
 const categorys = [
   {name: "Tech", color: "#6D4C41"},

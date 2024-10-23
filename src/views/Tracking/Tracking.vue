@@ -9,7 +9,7 @@
         </ion-toolbar>
       </ion-header>
     <ion-content :fullscreen="true">
-      <Menu />
+      <SideBarMenu />
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Tracking</ion-title>
@@ -34,5 +34,5 @@
 
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-import Menu from '@/components/Menu.vue';
+import SideBarMenu from '@/components/SideBarMenu.vue';
 </script>

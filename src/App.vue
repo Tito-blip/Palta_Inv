@@ -10,7 +10,7 @@
 <script lang="ts">
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/vue';
 import { Ref, defineComponent, ref } from 'vue';
-import Menu from "./components/Menu.vue";
+import Menu from "./components/SideBarMenu.vue";
 
 export default defineComponent({
   name: 'App',
