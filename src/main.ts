@@ -34,13 +34,6 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-/* Shoelace components */
-import '@shoelace-style/shoelace'
-import '@shoelace-style/shoelace/dist/themes/light.css'
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path'
-
-setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.0/cdn/')
-
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -52,10 +45,17 @@ const vuetify = createVuetify({
   directives,
 })
 
+// Pinia
+
+import { createPinia } from 'pinia';
+
+const pinia = createPinia();
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
-  .use(vuetify);
+  .use(vuetify)
+  .use(pinia);
 
 router.isReady().then(() => {
   app.mount('#app');

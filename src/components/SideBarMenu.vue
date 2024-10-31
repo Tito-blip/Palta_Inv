@@ -31,7 +31,7 @@
           Account
         </ion-list-header>
         <ion-menu-toggle :auto-hide="false">
-          <ion-item button @click="navigate('/profile')">
+          <ion-item button @click="navigate('/Profile')">
             <ion-icon slot="start" :icon="ionIcons.person"></ion-icon>
             &nbsp;
             <ion-label>
@@ -129,6 +129,7 @@ export default defineComponent({
     }
 
     const logout = () => {
+      loggedIn.value = false;
     }
 
     return {

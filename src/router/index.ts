@@ -1,20 +1,16 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue'
+import TabsPage from '../views/TabsPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/Home'
+    redirect: '/Home', 
   },
   {
     path: '/',
-    component: TabsPage,
+    component: TabsPage,  
     children: [
-      {
-        path: '',
-        redirect: '/'
-      },
       {
         path: 'Home',
         component: () => import('@/views/Home/HomePage.vue')
@@ -34,24 +30,24 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'Stats',
         component: () => import('@/views/Stats/StatsPage.vue')
-      },
-      {
-        path: 'Login',
-        component: () => import('@/views/Forms/Login/LoginForm.vue')
-      },
-      {
-        path: 'Register',
-        component: () => import('@/views/Forms/Register/RegisterForm.vue')
-      },
-      {
-        path: 'addProduct',
-        component: () => import('@/views/Forms/Add Product/AddProductForm.vue')
-      },
-      {
-        path: 'Profile',
-        component: () => import('@/views/Profile/ProfilePage.vue')
       }
     ]
+  },
+  {
+    path: '/Login',  
+    component: () => import('@/views/Forms/Login/LoginForm.vue')
+  },
+  {
+    path: '/Register',
+    component: () => import('@/views/Forms/Register/RegisterForm.vue')
+  },
+  {
+    path: '/addProduct',
+    component: () => import('@/views/Forms/Add Product/AddProductForm.vue')
+  },
+  {
+    path: '/Profile',
+    component: () => import('@/views/Profile/ProfilePage.vue')
   }
 ]
 
@@ -60,4 +56,4 @@ const router = createRouter({
   routes
 })
 
-export default router
+export default router;

@@ -1,7 +1,7 @@
 <template>
   <div class="ion-margin">
   <v-lazy :min-height="200" :options="{'threshold':0.5}" transition="fade-transition">
-    <v-card class="mx-auto" max-width="400" :color="color">
+    <v-card class="mx-auto" max-width="300" :color="color">
 
       <v-img :src="img">
       </v-img>
@@ -16,7 +16,6 @@
         <template v-slot:append>
           <div class="align-end">
             <v-btn icon="mdi-pencil"></v-btn>
-            &nbsp;
           </div>
         </template>
         </v-list-item>

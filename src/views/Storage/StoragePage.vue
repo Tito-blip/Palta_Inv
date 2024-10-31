@@ -21,33 +21,76 @@
           <v-icon icon="mdi-filter" start></v-icon>
             Filters:
         </v-chip>
-        <v-chip-group filter multiple v-for="category in categorys">
+        <v-chip-group filter multiple v-for="category in categorys" :key="category.name">
           <v-chip :color="category.color" variant="elevated" inline v-if="!!category.name">
             {{category.name}}
           </v-chip>
         </v-chip-group>
       </div>
 
-      <div class="ion-padding">  
-        <Card :name="'PC'" :color="'#9575CD'" :stock="20"/>
-        <Card :name="'Example'" :stock="10" :color="'secondary'"/>
-        <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
-        <Card :name="'PC'" :stock="20" :color="'#9575CD'"/>
-        <Card :name="'PC'" :stock="20" :color="'#9575CD'"/>
-        <Card :name="'Example'" :stock="10" :color="'secondary'"/>
-        <Card :name="'Example 2'" :stock="34" :color="'#FFD180'"/>
+      <div class="d-flex justify-center">
+        <v-col cols="auto">
+          <v-btn color="secondary" icon="mdi-plus" size="small" @click="openModal"></v-btn>
+        </v-col>
+      </div>
+
+      <ion-modal :isOpen="modalOpened" @onDidDismiss="closeModal"> 
+        <AddProductForm @addProductData="handleGetFormData" @close="closeModal" />
+        <v-btn @click="closeModal"></v-btn>
+      </ion-modal>
+
+      <div class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
+          <ProductCard :name="card.name" :color="card.color" :stock="card.stock"/>
+      </div>
+
+      <v-btn @click="debugShow"> Show cards data </v-btn>
+
+      <div v-if="debug" class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
+          <p style="border: 2px; border-style: solid;">
+            Name: {{ card.name }} |
+            Color: {{ card.color }} |
+            Stock: {{ card.stock }}
+          </p>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-import Card from '@/components/Card.vue';
+import { IonModal, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
+import { ref } from 'vue';
+import ProductCard from '@/components/ProductCard.vue';
 import SideBarMenu from '@/components/SideBarMenu.vue';
+import AddProductForm from '../Forms/Add Product/AddProductForm.vue'; 
+
+// TODO: Add LocalStorage persistance
+// TODO: Later add Pinia state management
+
+const modalOpened = ref(false);
+
+const debug = ref(false);
+
+const cards = ref([]);
+
+const handleGetFormData = (addProductData) => {
+  cards.value.push({ ...addProductData });
+  console.log(cards);
+};
 
 const categorys = [
   {name: "Tech", color: "#6D4C41"},
   {name: "Other", color: "green"}
 ]
+
+const debugShow = () => {
+  debug.value = !debug.value;
+}
+
+const openModal = () => {
+  modalOpened.value = true;
+}
+
+const closeModal = () => {
+  modalOpened.value = false;
+}
 </script>
