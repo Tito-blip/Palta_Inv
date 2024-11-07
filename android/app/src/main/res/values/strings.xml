@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Palta_Inv</string>
+    <string name="title_activity_main">Palta_Inv</string>
+    <string name="package_name">com.palta.inv</string>
+    <string name="custom_url_scheme">com.palta.inv</string>
+</resources>
