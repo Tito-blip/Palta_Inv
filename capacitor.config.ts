@@ -1,9 +1,13 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'cl.palta.inv',
+  appId: 'com.palta.inv',
   appName: 'Palta_Inv',
-  webDir: 'dist'
+  webDir: 'dist',
+  server: {
+    hostname: 'localhost',
+    androidScheme: 'https'
+  }
 };
 
 export default config;

@@ -92,9 +92,3 @@
         emit('close');
     })
   </script>
-
-  <!--
-
-    submit => data => [{formData}] => cards.value.push({ ...addProductData }); => v-for show cards 
-
-  -->

@@ -19,11 +19,14 @@
       <div class="ion-padding">
           <Spark />
       </div>
+      <div>
+        <v-btn color="secondary" size="small" @click=""></v-btn>
+      </div>
     </ion-content>
   </ion-page>
 </template>
   
-<script setup lang="ts">
+<script setup>
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
   import Menu from '@/components/SideBarMenu.vue';
   import Spark from '@/components/Spark.vue';
