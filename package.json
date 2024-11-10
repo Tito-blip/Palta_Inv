@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.2",
+    "@ionic/cli": "^7.2.0",
     "@mdi/font": "^7.4.47",
     "@vitejs/plugin-legacy": "^5.4.2",
     "@vitejs/plugin-vue": "^4.6.2",
