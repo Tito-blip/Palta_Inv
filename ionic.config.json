@@ -3,5 +3,11 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "vue-vite"
+  "type": "vue-vite",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "http://localhost:8100"
+    }
+  ]
 }
