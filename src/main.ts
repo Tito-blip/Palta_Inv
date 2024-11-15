@@ -40,6 +40,9 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -55,7 +58,8 @@ const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(vuetify)
-  .use(pinia);
+  .use(pinia)
+  .use(ToastPlugin);
 
 router.isReady().then(() => {
   app.mount('#app');

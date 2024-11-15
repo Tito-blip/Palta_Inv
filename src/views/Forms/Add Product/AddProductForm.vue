@@ -13,6 +13,7 @@
           :counter="10"
           :error-messages="name.errorMessage.value"
           label="Name"
+          placeholder="Product Name"
         ></v-text-field>
   
         <v-text-field
@@ -20,15 +21,23 @@
           :counter="7"
           :error-messages="color.errorMessage.value"
           label="Color"
+          placeholder="#"
         ></v-text-field>
 
         <v-text-field
             v-model="stock.value.value"
             :error-messages="stock.errorMessage.value"
             label="Stock"
+            placeholder="0"
             type="number"
         ></v-text-field>
         
+        <v-text-field
+          v-model="image.value.value"
+          placeholder="Url"
+          label="Image"
+        ></v-text-field>
+
         <!-- ! Change stock text field. Error: returns string -->
         
         <!--* TODO: Add missing fields. -->
@@ -68,7 +77,7 @@
         color (value) {
           if (value?.length >= 7) return true
   
-          return 'Must be a valid e-mail.'
+          return 'Needs to be at least 7 characters.'
         },
         stock (value) {
             if (value >= 0) return true
@@ -81,12 +90,14 @@
     const name = useField('name')
     const color = useField('color')
     const stock = useField('stock')
+    const image = useField('image')
 
     const submit = handleSubmit(() => {
         const addProductData = {
             name: name.value.value,
             color: color.value.value,
-            stock: stock.value.value
+            stock: stock.value.value,
+            img: image.value.value
         }
         emit('addProductData', addProductData);
         emit('close');

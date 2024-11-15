@@ -40,16 +40,17 @@
       </ion-modal>
 
       <div class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
-          <ProductCard :name="card.name" :color="card.color" :stock="card.stock"/>
+          <ProductCard :name="card.name" :color="card.color" :stock="card.stock" :img="card.img"/>
       </div>
 
       <v-btn @click="debugShow"> Show cards data </v-btn>
-
+      <!-- Iterates through cards array to render the data. -->
       <div v-if="debug" class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
           <p style="border: 2px; border-style: solid;">
             Name: {{ card.name }} |
             Color: {{ card.color }} |
-            Stock: {{ card.stock }}
+            Stock: {{ card.stock }} | 
+            Image: {{ card.img }}
           </p>
       </div>
     </ion-content>
@@ -64,7 +65,7 @@ import SideBarMenu from '@/components/SideBarMenu.vue';
 import AddProductForm from '../Forms/Add Product/AddProductForm.vue'; 
 
 // TODO: Add LocalStorage persistance
-// TODO: Later add Pinia state management
+// TODO: Pinia state management
 
 const modalOpened = ref(false);
 
@@ -72,12 +73,12 @@ const debug = ref(false);
 
 const cards = ref([]);
 
-const handleGetFormData = (addProductData) => {
+const handleGetFormData = (addProductData) => { // Saves form data to array for displaying on view.
   cards.value.push({ ...addProductData });
   console.log(cards);
 };
 
-const categorys = [
+const categorys = [ 
   {name: "Tech", color: "#6D4C41"},
   {name: "Other", color: "green"}
 ]

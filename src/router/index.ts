@@ -48,6 +48,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/Profile',
     component: () => import('@/views/Profile/ProfilePage.vue')
+  },
+  {
+    path: '/auth',
+    component: () => import('@/components/Auth.vue')
   }
 ]
 

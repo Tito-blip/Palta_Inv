@@ -29,6 +29,28 @@
   import Spark from '@/components/Spark.vue';
   import SideBarMenu from '@/components/SideBarMenu.vue';
   import Button from 'primevue/button';
+  import { useToast } from 'vue-toast-notification';
+
+  const $toast = useToast();
+
+  // Show alert after API authentication
+  const showToastSuccess = localStorage.getItem('showToastSuccess'); // Replace with state management or other solution.
+  const showToastError = localStorage.getItem('showToastError');
+
+  if (showToastSuccess) {
+    $toast.success('Api authorized!', {
+      position: 'top',
+      duration: 5000
+    })
+    localStorage.removeItem('showToastSuccess')
+  } else if (showToastError)  {
+    $toast.error(`An error ocurred! ${showToastError}`, { // `An error ocurred! ${message}`
+      position: 'top',
+      duration: 5000
+    })
+    localStorage.removeItem('showToastError')    
+  }
+
 </script>
 
 <style>

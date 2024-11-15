@@ -10,7 +10,11 @@
       </ion-header>
       <ion-content :fullscreen="true">
         <SideBarMenu />
-        <div class="ion-padding">
+        <div v-if="!apiLogged">
+          <h1> Register API </h1>
+          <a href="localhost:8100/Stats"> Register API </a>
+        </div>
+        <div class="ion-padding" v-else>
           <SalesDataTable />
         </div>
     </ion-content>
@@ -21,4 +25,6 @@
     import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton } from '@ionic/vue';
     import SalesDataTable from '@/components/SalesDataTable.vue';
     import SideBarMenu from '@/components/SideBarMenu.vue';
+
+    const apiLogged = localStorage.getItem('apiLogged') // Change to state or other alternative
 </script>
