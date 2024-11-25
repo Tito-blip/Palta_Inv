@@ -8,30 +8,32 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/Home', 
   },
   {
-    path: '/',
-    component: TabsPage,  
-    children: [
-      {
-        path: 'Home',
-        component: () => import('@/views/Home/HomePage.vue')
-      },
-      {
-        path: 'Storage',
-        component: () => import('@/views/Storage/StoragePage.vue')
-      },
-      {
-        path: 'Sales',
-        component: () => import('@/views/Sales/SalesPage.vue')
-      },
-      {
-        path: 'Tracking',
-        component: () => import('@/views/Tracking/Tracking.vue')
-      },
-      {
-        path: 'Stats',
-        component: () => import('@/views/Stats/StatsPage.vue')
-      }
-    ]
+    path: '/Home',
+    component: () => import('@/views/Home/HomePage.vue')
+  },
+  {
+    path: '/Storage',
+    component: () => import('@/views/Storage/StoragePage.vue')
+  },
+  {
+    path: '/ProductDetails/:id',
+    component: () => import('@/views/Storage/ChildProduct.vue')
+  },
+  {
+    path: '/Sales',
+    component: () => import('@/views/Sales/SalesPage.vue')
+  },
+  {
+    path: '/Tracking',
+    component: () => import('@/views/Tracking/Tracking.vue')
+  },
+  {
+    path: '/Stats',
+    component: () => import('@/views/Stats/StatsPage.vue')
+  },
+  {
+    path: '/Debug',
+    component: () => import('@/Debug.vue')
   },
   {
     path: '/Login',  
@@ -52,6 +54,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
     component: () => import('@/components/Auth.vue')
+  },
+  {
+    path: '/Welcome',
+    component: () => import('@/views/Welcome/Welcome.vue')
   }
 ]
 

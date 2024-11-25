@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
         <ion-toolbar>
-          <ion-title>Storage</ion-title>
+          <ion-title class="text-center">Storage</ion-title>
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
@@ -36,15 +36,20 @@
 
       <ion-modal :isOpen="modalOpened" @onDidDismiss="closeModal"> 
         <AddProductForm @addProductData="handleGetFormData" @close="closeModal" />
-        <v-btn @click="closeModal"></v-btn>
       </ion-modal>
 
-      <div class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
-          <ProductCard :name="card.name" :color="card.color" :stock="card.stock" :img="card.img"/>
+      <div class="ion-padding" id="ProductsGrid">  
+        <div>
+          <ProductCard :name="TestCard.name" :stock="TestCard.stock" :price="TestCard.price" :category="TestCard.category"/>
+          <ProductCard v-for="card in cards" :key="card.name" :name="card.name" :stock="card.stock" :price="card.price" :category="card.categroy":img="card.img"/>
+        </div>
+        <div v-if="products_data"> <!-- Render the api data -->
+          <ProductCard v-for="product, index in products_data[0]" :key="index" :name="product.body.title" :stock="product.body.available_quantity" :price="product.body.price" :category="product.body.category_id" :img="product.body.thumbnail"/>
+        </div>
       </div>
 
       <v-btn @click="debugShow"> Show cards data </v-btn>
-      <!-- Iterates through cards array to render the data. -->
+      <!-- Iterates through cards array to render the data. From the form -->
       <div v-if="debug" class="ion-padding" id="ProductsGrid" v-for="card in cards" key="card.name">  
           <p style="border: 2px; border-style: solid;">
             Name: {{ card.name }} |
@@ -72,6 +77,10 @@ const modalOpened = ref(false);
 const debug = ref(false);
 
 const cards = ref([]);
+
+const TestCard = ref({name: 'TestCard', stock: 15, price: 1000, category: 'Tech'})
+
+const products_data = ref([JSON.parse(localStorage.getItem('products_data'))]);
 
 const handleGetFormData = (addProductData) => { // Saves form data to array for displaying on view.
   cards.value.push({ ...addProductData });

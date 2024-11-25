@@ -5,7 +5,7 @@
           <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
           </ion-buttons>
-          <ion-title>Register</ion-title>
+          <ion-title class="text-center">Register</ion-title>
         </ion-toolbar>
       </ion-header>
   
