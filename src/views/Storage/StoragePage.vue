@@ -44,7 +44,7 @@
           <ProductCard v-for="card in cards" :key="card.name" :name="card.name" :stock="card.stock" :price="card.price" :category="card.categroy":img="card.img"/>
         </div>
         <div v-if="products_data"> <!-- Render the api data -->
-          <ProductCard v-for="product, index in products_data[0]" :key="index" :name="product.body.title" :stock="product.body.available_quantity" :price="product.body.price" :category="product.body.category_id" :img="product.body.thumbnail"/>
+          <ProductCard v-for="(product, index) in products_data" :key="index" :name="product.body.title" :stock="product.body.available_quantity" :price="product.body.price" :category="product.body.category_id" :img="product.body.thumbnail"/>
         </div>
       </div>
 
@@ -64,13 +64,20 @@
 
 <script setup>
 import { IonModal, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, IonButtons } from '@ionic/vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import ProductCard from '@/components/ProductCard.vue';
 import SideBarMenu from '@/components/SideBarMenu.vue';
 import AddProductForm from '../Forms/Add Product/AddProductForm.vue'; 
+import { Preferences } from '@capacitor/preferences';
 
 // TODO: Add LocalStorage persistance
 // TODO: Pinia state management
+
+onMounted(async () => {
+  const storedData = await Preferences.get({ key: 'products_data' });
+  products_data.value = storedData.value ? JSON.parse(storedData.value) : [];
+  console.log(products_data.value)
+})
 
 const modalOpened = ref(false);
 
@@ -80,7 +87,7 @@ const cards = ref([]);
 
 const TestCard = ref({name: 'TestCard', stock: 15, price: 1000, category: 'Tech'})
 
-const products_data = ref([JSON.parse(localStorage.getItem('products_data'))]);
+const products_data = ref([]);
 
 const handleGetFormData = (addProductData) => { // Saves form data to array for displaying on view.
   cards.value.push({ ...addProductData });

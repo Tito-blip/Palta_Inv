@@ -143,7 +143,7 @@
 
 import { ref } from 'vue';
 import { IonRouterOutlet, IonContent, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonToggle, ToggleCustomEvent } from '@ionic/vue';
-import { logInOutline, logOutOutline, personCircleOutline, accessibilityOutline, contrastOutline, homeOutline, cubeOutline, pinOutline, receiptOutline, statsChartOutline } from "ionicons/icons";
+import { logInOutline, logOutOutline, personCircleOutline, accessibilityOutline, contrastOutline, homeOutline, cubeOutline, pinOutline, receiptOutline, statsChartOutline, shieldCheckmarkOutline } from "ionicons/icons";
 import router from '@/router';
 
 const loggedIn = ref(true);
@@ -195,6 +195,11 @@ const appPages = [
           title: 'Stats',
           url: '/Stats',
           icon: statsChartOutline
+        },
+        {
+          title: 'Debug',
+          url: '/Debug',
+          icon: shieldCheckmarkOutline
         }
       ] 
 </script>

@@ -1,17 +1,42 @@
 <template>
   <!-- Replace with data-table-server later -->
   <v-data-table :items="items" :headers="headers">
-    <template v-slot:item.actions="{ item }">
-      <v-icon color="success" class="me-2" size="small" @click=""> mdi-pencil </v-icon>
-      <v-icon color="#A1887F" class="me-2" size="small" @click=""> mdi-delete </v-icon>
-    </template>
+    
   </v-data-table>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { Preferences } from '@capacitor/preferences';
+import { onMounted, ref } from 'vue';
 
-const sales_arr = JSON.parse(localStorage.getItem('sales_data'))
+onMounted(async () => {
+  try {
+    const sales_arr = await Preferences.get({ key: 'sales_data' });
+    //console.log('Stored sales:', sales_arr);
+    
+    if (sales_arr.value) {
+      const parsedSales = JSON.parse(sales_arr.value);
+      // console.log('Parsed sales:', parsedSales);
+      
+      // Directly process the stored data
+      if (parsedSales && parsedSales.length > 0) {
+        parsedSales.forEach(sale => {
+          items.value.push({
+            product: sale.order_items[0]?.item?.title,
+            quantity: sale.order_items[0]?.quantity,
+            price: '$' + (sale.paid_amount).toLocaleString(),
+            date: sale.date_created.slice(0, 10),
+            buyer: sale.buyer?.nickname
+          });
+        });
+      }
+    } else {
+      console.error('No sales data found in Preferences');
+    }
+  } catch (error) {
+    console.error('Error processing sales data:', error);
+  }
+});
 
 const headers = ref([
   { title: "Product", key: "product"},
@@ -29,20 +54,6 @@ const items = ref([
   { product: "Pencil", price: "$10", quantity: "1", date: "01/01/2022", buyer: "Mary Loi" },
   { product: "Clock", price: "$5", quantity: "2", date: "02/07/2024", buyer: "Jane Moe" },
   { product: "Monitor", price: "$300", quantity: "5", date: "20/10/2023", buyer: "Tom Toe" },
-  { product: "Speakers", price: "$240", quantity: "1", date: "06/04/2023", buyer: "Kim Joe" },
-  { product: "Speakers", price: "$240", quantity: "1", date: "06/04/2023", buyer: "Kim Joe" },
-  { product: "Speakers", price: "$240", quantity: "1", date: "06/04/2023", buyer: "Kim Joe" }
 ]);
-
-
-sales_arr.results.forEach(sale => {
-  items.value.push({
-    product: sale.order_items[0].item.title,
-    quantity: sale.order_items[0].quantity,
-    price: '$' + sale.paid_amount,
-    date: sale.date_created.slice(0, 10),
-    buyer: sale.buyer.nickname,
-  })
-});
-
 </script>
+

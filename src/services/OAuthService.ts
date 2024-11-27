@@ -1,18 +1,8 @@
 import axios from "axios";
 import { SecureStorage } from "@aparajita/capacitor-secure-storage";
+import { Preferences } from "@capacitor/preferences";
 
 const url = 'https://api.mercadolibre.com/oauth/token';
-
-const data = new URLSearchParams();
-const code = await SecureStorage.getItem('authToken');
-const refresh = await SecureStorage.getItem('refreshToken');
-
-data.append('grant_type', 'refresh_token');
-data.append('client_id', import.meta.env.VITE_APP_ID);
-data.append('client_secret', import.meta.env.VITE_APP_SECRET);
-data.append('refresh_token', 'TG-673513aacac41100014ffcd1-2092614606')
-//data.append('code', code || ''); // code has value or is null
-//data.append('redirect_uri', import.meta.env.VITE_REDIRECT_URI);
 
 const config = {
   headers: {
@@ -24,6 +14,9 @@ const config = {
 /**
  * Don't set token response on storage when using PWA, only use for dev or mobile version.
  * Replace with PKCE flow.
+ * 
+ * 
+ * Preferences API usage only for testing, replace with DB solution for mass data. Use safer solution for sensitive data.
 */
 
 /**
@@ -37,11 +30,20 @@ const config = {
 
 export async function getAccessToken() {
     try {
+        const code = await Preferences.get({ key: 'authToken' });
+        const data = new URLSearchParams();
+        console.log(code.value);
+        data.append('grant_type', 'authorization_code');
+        data.append('client_id', import.meta.env.VITE_APP_ID);
+        data.append('client_secret', import.meta.env.VITE_APP_SECRET);
+        data.append('code', code.value || ''); // code has value or is null
+        data.append('redirect_uri', import.meta.env.VITE_REDIRECT_URI);
+        console.log(data.values);
         const response = await axios.post(url, data, config);
-        console.log('Response:', response.data);
-        SecureStorage.set('accessToken', response.data.access_token)
-        SecureStorage.set('refreshToken', response.data.refresh_token)
-        SecureStorage.removeItem('authToken')
+        await Preferences.set({ key: 'accessToken', value: response.data.access_token });
+        await Preferences.set({ key: 'refreshToken', value: response.data.refresh_token });
+        await Preferences.remove({ key: 'authToken' });
+        console.log('Response:', response.data.values);
     } catch (error) {
         console.error('Error:', error);
         throw error;
@@ -60,11 +62,19 @@ export async function getAccessToken() {
 
 export async function exchangeToken() {
     try {
+        const refresh = await Preferences.get({ key: 'refreshToken' });
+        console.log(refresh.value);
+        const data = new URLSearchParams();
+        data.set('grant_type', 'refresh_token');
+        data.set('client_id', import.meta.env.VITE_APP_ID);
+        data.set('client_secret', import.meta.env.VITE_APP_SECRET);
+        data.set('refresh_token', refresh.value || '');
+
         const response = await axios.post(url, data, config);
-        SecureStorage.removeItem('accessToken')
-        SecureStorage.removeItem('refreshToken')
-        SecureStorage.set('newAccessToken', response.data.access_token)
-        SecureStorage.set('newRefreshToken', response.data.refresh_token)
+        await Preferences.remove({key: 'accessToken'})
+        await Preferences.remove({key: 'refreshToken'})
+        await Preferences.set({key: 'newAccessToken', value: response.data.access_token})
+        await Preferences.set({ key: 'newRefreshToken', value: response.data.refresh_token })
     } catch (error) {
         console.error('Error:', error);
         throw error;

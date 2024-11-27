@@ -1,12 +1,12 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.palta.inv',
+  appId: 'com.paltainv.app',
   appName: 'Palta_Inv',
   webDir: 'dist',
+  loggingBehavior: 'debug',
   server: {
-    hostname: 'localhost',
-    androidScheme: 'https'
+    androidScheme: 'palta'
   },
   plugins: {
     CapacitorSQLite: {

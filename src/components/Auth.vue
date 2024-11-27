@@ -15,22 +15,22 @@
   const router = useRouter();
   const route = useRoute();
 
-  onMounted(() => {
+  onMounted(async () => {
 
     // If route has code in url, get the token, and save to encrypted storage.
 
     let code = route.query.code;
 
     if (code) { 
-      SecureStorage.setItem('authToken', code);
+      await SecureStorage.setItem('authToken', code);
       localStorage.setItem('apiLogged', true); // localStorage used only for testing
       localStorage.setItem('showToastSuccess', true)
+      router.push('/Home')
     } else {
       console.error('No code found in URL');
       localStorage.remove('apiLogged', false);
       localStorage.setItem('showToastError', true)
-    }
-
-    router.push('/Home')
+      router.push('/Home')
+    }    
   });
 </script>
