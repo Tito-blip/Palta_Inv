@@ -21,7 +21,7 @@
 
       <SideBarMenu />
       <ion-searchbar v-if="toggled" v-on:ion-cancel="closeToggle" class="custom" show-cancel-button="always" placeholder="Search"></ion-searchbar>
-      <!--<ion-button @click="addItem"> Add Item</ion-button>-->
+      <ion-button @click="addItem"> Add Item</ion-button>
       <ion-list>
         <ion-item v-for="item in items" :key="item.id">
           {{ item.name }}
@@ -46,14 +46,13 @@
 </style>
 
 <script setup>
-  import { IonIcon, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton, IonList, IonItem, IonButton } from '@ionic/vue';
+  import { IonIcon, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButtons, IonMenuButton, IonList, IonItem, IonButton, onIonViewDidEnter } from '@ionic/vue';
   import { ref, onMounted } from 'vue';
   import Carousel from '@/components/Carousel.vue';
   import Spark from '@/components/Spark.vue';
   import SideBarMenu from '@/components/SideBarMenu.vue';
-  import { createDatabase } from '@/services/DatabaseService'
   import { useToast } from 'vue-toast-notification';
-  import { CapacitorSQLite } from '@capacitor-community/sqlite';
+  import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
   import { search } from 'ionicons/icons';
 
   const toggled = ref(false);
@@ -87,41 +86,42 @@
   }
 
   const items = ref([])
+  const db = ref('')
+  const sqlite = ref('')
 
-  /** Apply when testing on mobile
-  onMounted(async () => {
-    await createDatabase();
-    await fetchItems();
-    console.log('DB Created!')
+  onIonViewDidEnter(async () => {
+    sqlite.value = new SQLiteConnection(CapacitorSQLite);
+    const ret = await sqlite.value.checkConnectionsConsistency();
+    const isConn = (await sqlite.value.isConnection("db_vite", false)).result
+  
+    if (ret.result && isConn) {
+      db.value = await sqlite.value.retrieveConnection("db_vite", false);
+    } else {
+      db.value = await sqlite.value.createConnection(
+        "db_vite",
+        false,
+        "no-encryption",
+        1,
+        false
+      );
+    }
+    
+    loadData();
   });
 
-  async function fetchItems() {
-    const db = await CapacitorSQLite.createConnection(
-      'myDb',
-      false,
-      'no-encryption',
-      1
+  const addItem = async () => {
+    await db.value?.open();
+    await db.value?.query(
+      `INSERT INTO test (id, name) values (?, ?)`,
+      [Date.now(), "Name " + Date.now()]
     );
-    await db.open();
-    const res = await db.query('SELECT * FROM items');
-    items.value = res.values;
-    await CapacitorSQLite.closeConnection('myDb');
-    console.log('DB Closed!')
   }
-
-  async function addItem() {
-    const db = await CapacitorSQLite.createConnection(
-    'myDb',
-    false,
-    'no-encryption',
-    1
-    );
-    await db.open();
-    const name = `Item ${items.value.length + 1}`;
-    await db.run('INSERT INTO items (name) VALUES (?);', [name]);
-    console.log('Items inserted')
-    await CapacitorSQLite.closeConnection('myDb');
-    await fetchItems();
+  
+  const loadData = async () => {
+    await db.value?.open();
+    const respSelect = await db.value?.query('SELECT * FROM test');
+    console.log(`res: ${JSON.stringify(respSelect)}`);
+    await db.value?.close();
+    items.value = respSelect?.values;
   }
-*/
 </script>

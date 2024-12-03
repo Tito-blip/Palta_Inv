@@ -22,6 +22,9 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     })
   ],
+  optimizeDeps: {
+    exclude: ['jeep-sqlite/loader']
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
