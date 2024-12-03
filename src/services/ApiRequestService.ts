@@ -55,10 +55,7 @@ export async function getProductsData() {
     }
 
     const options = {
-        // parse products_arr before call ?
-        // url: `https://api.mercadolibre.com/items?ids=${products_arr.value}`
-        // cors anywhere ?¿
-        url: `https://api.mercadolibre.com/items?ids=${JSON.parse(products_arr.value).join(',')}`,
+        url: `https://cors-anywhere.herokuapp.com/https://api.mercadolibre.com/items?ids=${JSON.parse(products_arr.value).join(',')}`,
         headers: {
             Authorization: `Bearer ` + access_token.value,
             "X-Requested-With": "XMLHttpRequest",
@@ -74,7 +71,7 @@ export async function getSalesData() {
     const user_id = await Preferences.get({ key: 'user_id' })
 
     const options = {
-        url: `https://api.mercadolibre.com/orders/search?seller=${user_id.value}`,
+        url: `https://cors-anywhere.herokuapp.com/https://api.mercadolibre.com/orders/search?seller=${user_id.value}`,
         headers: {
             Authorization: `Bearer ` + access_token.value
         }
