@@ -39,8 +39,7 @@ export async function getProductsId() {
         
         await Preferences.set({ key: 'seller_id', value: String(response.data.seller_id )});
         await Preferences.set({ key: 'products', value: JSON.stringify(response.data.results) });
-        console.log('Userid ', user_id.value)
-        console.log(JSON.stringify(response.data.results))
+        console.log('Userid | | |')
     } catch (error) {
         console.error('Error getting products:', error);
         throw error;

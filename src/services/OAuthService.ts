@@ -43,7 +43,7 @@ export async function getAccessToken() {
         await Preferences.set({ key: 'accessToken', value: response.data.access_token });
         await Preferences.set({ key: 'refreshToken', value: response.data.refresh_token });
         await Preferences.remove({ key: 'authToken' });
-        console.log('Response:', response.data.values);
+        console.log('| | |');
     } catch (error) {
         console.error('Error:', error);
         throw error;
@@ -75,6 +75,7 @@ export async function exchangeToken() {
         await Preferences.remove({key: 'refreshToken'})
         await Preferences.set({key: 'newAccessToken', value: response.data.access_token})
         await Preferences.set({ key: 'newRefreshToken', value: response.data.refresh_token })
+        console.log('| | |');
     } catch (error) {
         console.error('Error:', error);
         throw error;
