@@ -43,9 +43,9 @@ import * as directives from 'vuetify/directives'
 import ToastPlugin from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 
-import { Capacitor } from '@capacitor/core';
-import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
-import { JeepSqlite } from 'jeep-sqlite/dist/components/jeep-sqlite';
+//import { Capacitor } from '@capacitor/core';
+//import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
+//import { JeepSqlite } from 'jeep-sqlite/dist/components/jeep-sqlite';
 //import { applyPolyfills, defineCustomElements } from 'jeep-sqlite/loader';
 
 const vuetify = createVuetify({
@@ -65,7 +65,8 @@ const app = createApp(App)
   .use(router)
   .use(vuetify)
   .use(pinia)
-  .use(ToastPlugin);
+  .use(ToastPlugin)
+  .mount('#app');
 
 /* 
 customElements.define('jeep-sqlite', JeepSqlite);
