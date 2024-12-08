@@ -67,6 +67,7 @@ const app = createApp(App)
   .use(pinia)
   .use(ToastPlugin);
 
+/* 
 customElements.define('jeep-sqlite', JeepSqlite);
 
 async function initializeApp() {
@@ -120,3 +121,4 @@ async function initializeApp() {
 window.addEventListener('DOMContentLoaded', () => {
   initializeApp();
 });
+**/

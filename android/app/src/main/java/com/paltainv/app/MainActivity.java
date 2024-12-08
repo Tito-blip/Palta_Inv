@@ -1,4 +1,4 @@
-package com.palta.inv;
+package com.paltainv.app;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-  import { SecureStorage } from '@aparajita/capacitor-secure-storage';
+  import { Preferences } from '@capacitor/preferences';
   import { onMounted } from 'vue';
   import { useRouter, useRoute } from 'vue-router';
 
@@ -20,9 +20,8 @@
     // If route has code in url, get the token, and save to encrypted storage.
 
     let code = route.query.code;
-
     if (code) { 
-      await SecureStorage.setItem('authToken', code);
+      await Preferences.set({ key: 'authToken', value: code});
       localStorage.setItem('apiLogged', true); // localStorage used only for testing
       localStorage.setItem('showToastSuccess', true)
       router.push('/Home')

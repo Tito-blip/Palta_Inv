@@ -54,7 +54,7 @@
   import Spark from '@/components/Spark.vue';
   import SideBarMenu from '@/components/SideBarMenu.vue';
   import { useToast } from 'vue-toast-notification';
-  import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
+  //import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
   import { search } from 'ionicons/icons';
 
   const toggled = ref(false);

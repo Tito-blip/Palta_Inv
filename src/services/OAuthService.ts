@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SecureStorage } from "@aparajita/capacitor-secure-storage";
 import { Preferences } from "@capacitor/preferences";
 
 const url = 'https://api.mercadolibre.com/oauth/token';
@@ -89,7 +88,6 @@ export async function exchangeToken() {
 
 export function logoutApi()  {
     // Add request to remove user from authenticated list.
-    SecureStorage.clear()
     localStorage.removeItem('apiLogged')
     console.info('Logout successfull')
 };
