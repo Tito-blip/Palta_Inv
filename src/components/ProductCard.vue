@@ -112,7 +112,7 @@ const props = defineProps({
   },
   img: {
     type: String,
-    default: 'src/assets/placeholder.png',
+    default: 'assets/placeholder.png',
   },
   name: {
     type: String,

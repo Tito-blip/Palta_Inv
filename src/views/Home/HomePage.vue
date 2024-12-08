@@ -21,12 +21,14 @@
 
       <SideBarMenu />
       <ion-searchbar v-if="toggled" v-on:ion-cancel="closeToggle" class="custom" show-cancel-button="always" placeholder="Search"></ion-searchbar>
+      <!-- 
       <ion-button @click="addItem"> Add Item</ion-button>
       <ion-list>
         <ion-item v-for="item in items" :key="item.id">
           {{ item.name }}
         </ion-item>
       </ion-list>
+      -->
       <Carousel />
       <div class="ion-padding mb-1">
         <Spark />
@@ -85,6 +87,9 @@
     localStorage.removeItem('showToastError')    
   }
 
+
+  /**
+
   const items = ref([])
   const db = ref('')
   const sqlite = ref('')
@@ -124,4 +129,6 @@
     await db.value?.close();
     items.value = respSelect?.values;
   }
+ 
+  */
 </script>
